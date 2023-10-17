@@ -7,11 +7,15 @@
       }
     ],
     "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "book_backend/wsgi.py"
-      }
-    ]
+        {
+          "src": "/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": "/(.*)",
+          "dest": "projectname/wsgi.py"
+        }
+      ]
 }
 
   
