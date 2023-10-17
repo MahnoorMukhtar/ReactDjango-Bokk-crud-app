@@ -1,1 +1,1 @@
-# ReactDjango-Bokk-crud-app
+# ReactDjango-Book-crud-app
