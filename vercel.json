@@ -1,21 +1,30 @@
 {
+    "version": 2,  
+  
     "builds": [
       {
-        "src": "book-backend/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+        "src": "bbook-ackend",  
+        "use": "@now/python",  
+        "config": {
+          "maxLambdaSize": "15mb"  
+        }
       }
     ],
-    "routes": [
-        {
-          "src": "/static/(.*)",
-          "dest": "/static/$1"
-        },
-        {
-          "src": "/(.*)",
-          "dest": "projectname/wsgi.py"
-        }
-      ]
-}
-
   
+    "routes": [
+      {
+        "src": "/api/(.*)",  
+        "dest": "book-backend/manage.py", 
+        "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+      },
+      {
+        "src": "/(.*)",  
+        "dest": "book-frontend/build/$1",  
+        "continue": true
+      }
+    ],
+  
+    "env": {
+      "DJANGO_SETTINGS_MODULE":"book-backend.settings"
+    }
+}
