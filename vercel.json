@@ -3,7 +3,7 @@
   
     "builds": [
       {
-        "src": "bbook-ackend",  
+        "src": "book-backend",  
         "use": "@now/python",  
         "config": {
           "maxLambdaSize": "15mb"  
