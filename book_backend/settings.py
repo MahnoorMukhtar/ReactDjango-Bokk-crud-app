@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-9!=mpyz1ve2k&qkq!m37*+$8&huwkksd4jqm@oj1k1%9nbfle)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', '.now.sh']
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', '.now.sh', 'localhost']
 
 
 # Application definition
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -75,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'book_backend.wsgi.application'
+WSGI_APPLICATION = 'book_backend.wsgi.app'
 
 
 # Database
@@ -133,9 +134,10 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR, 'book-frontend/build/static' )
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build', 'static')
-MEDIA_URLS ='/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 # Default primary key field type
